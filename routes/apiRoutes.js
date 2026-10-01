@@ -9,8 +9,6 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-  getProductCategories,
-  createCategory,
   getAddonGroups,
   createAddonGroup,
   getInventory,
@@ -41,6 +39,15 @@ import {
   deleteKdsTicket
 } from '../controller/kdsController.js';
 
+import {
+  getCategories,
+  getCategoryById,
+  createCategory,
+  updateCategory,
+  updateCategoryStatus,
+  deleteCategory
+} from '../controller/categoryController.js';
+
 const router = express.Router();
 
 router.get('/health', getHealthCheck);
@@ -56,8 +63,13 @@ router.post('/products', createProduct);
 router.put('/products/:id', updateProduct);
 router.delete('/products/:id', deleteProduct);
 
-router.get('/categories', getProductCategories);
+// Category Routes (CRUD)
+router.get('/categories', getCategories);
+router.get('/categories/:id', getCategoryById);
 router.post('/categories', createCategory);
+router.put('/categories/:id', updateCategory);
+router.put('/categories/:id/status', updateCategoryStatus);
+router.delete('/categories/:id', deleteCategory);
 
 router.get('/addons', getAddonGroups);
 router.post('/addons', createAddonGroup);
