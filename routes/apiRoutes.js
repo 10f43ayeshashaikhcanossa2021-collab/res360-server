@@ -20,9 +20,6 @@ import {
   getTables,
   createTable,
   updateTableStatus,
-  getKdsTickets,
-  advanceKdsTicket,
-  toggleKdsItemCheck,
   getCustomers,
   getCustomerById,
   getReports,
@@ -34,6 +31,15 @@ import {
   getChatbotSuggestions,
   sendChatbotMessage
 } from '../controller/apiController.js';
+
+import {
+  getKdsTickets,
+  getKdsTicketById,
+  createKdsTicket,
+  advanceKdsTicket,
+  toggleKdsItemCheck,
+  deleteKdsTicket
+} from '../controller/kdsController.js';
 
 const router = express.Router();
 
@@ -65,9 +71,13 @@ router.get('/tables', getTables);
 router.post('/tables', createTable);
 router.put('/tables/:id/status', updateTableStatus);
 
+// KDS Routes (CRUD)
 router.get('/kds/tickets', getKdsTickets);
+router.get('/kds/tickets/:id', getKdsTicketById);
+router.post('/kds/tickets', createKdsTicket);
 router.put('/kds/tickets/:id/advance', advanceKdsTicket);
 router.put('/kds/tickets/:id/items/:itemId/check', toggleKdsItemCheck);
+router.delete('/kds/tickets/:id', deleteKdsTicket);
 
 router.get('/customers', getCustomers);
 router.get('/customers/:id', getCustomerById);
