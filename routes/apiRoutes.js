@@ -18,8 +18,6 @@ import {
   getTables,
   createTable,
   updateTableStatus,
-  getCustomers,
-  getCustomerById,
   getReports,
   getSaleReport,
   getSettings,
@@ -53,6 +51,14 @@ import {
   updateOrderStatus,
   deleteOrder
 } from '../controller/orderController.js';
+
+import {
+  getCustomers,
+  getCustomerById,
+  createCustomer,
+  updateCustomer,
+  deleteCustomer
+} from '../controller/customerController.js';
 
 const router = express.Router();
 
@@ -97,8 +103,12 @@ router.put('/kds/tickets/:id/advance', advanceKdsTicket);
 router.put('/kds/tickets/:id/items/:itemId/check', toggleKdsItemCheck);
 router.delete('/kds/tickets/:id', deleteKdsTicket);
 
+// Customer Routes (CRUD)
 router.get('/customers', getCustomers);
 router.get('/customers/:id', getCustomerById);
+router.post('/customers', createCustomer);
+router.put('/customers/:id', updateCustomer);
+router.delete('/customers/:id', deleteCustomer);
 
 // Order Routes (CRUD)
 router.get('/orders', getOrders);
