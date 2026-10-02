@@ -22,8 +22,6 @@ import {
   getCustomerById,
   getReports,
   getSaleReport,
-  getOrders,
-  createOrder,
   getSettings,
   updateSettings,
   getChatbotSuggestions,
@@ -47,6 +45,14 @@ import {
   updateCategoryStatus,
   deleteCategory
 } from '../controller/categoryController.js';
+
+import {
+  getOrders,
+  getOrderById,
+  createOrder,
+  updateOrderStatus,
+  deleteOrder
+} from '../controller/orderController.js';
 
 const router = express.Router();
 
@@ -94,8 +100,12 @@ router.delete('/kds/tickets/:id', deleteKdsTicket);
 router.get('/customers', getCustomers);
 router.get('/customers/:id', getCustomerById);
 
+// Order Routes (CRUD)
 router.get('/orders', getOrders);
+router.get('/orders/:id', getOrderById);
 router.post('/orders', createOrder);
+router.put('/orders/:id/status', updateOrderStatus);
+router.delete('/orders/:id', deleteOrder);
 
 router.get('/reports', getReports);
 router.get('/reports/sales', getSaleReport);
