@@ -11,10 +11,6 @@ import {
   deleteProduct,
   getAddonGroups,
   createAddonGroup,
-  getInventory,
-  createInventoryItem,
-  updateInventoryItem,
-  getLowStockInventory,
   getReports,
   getSaleReport,
   getSettings,
@@ -65,6 +61,15 @@ import {
   deleteTable
 } from '../controller/tableController.js';
 
+import {
+  getInventory,
+  getLowStockInventory,
+  getInventoryItemById,
+  createInventoryItem,
+  updateInventoryItem,
+  deleteInventoryItem
+} from '../controller/inventoryController.js';
+
 const router = express.Router();
 
 router.get('/health', getHealthCheck);
@@ -91,10 +96,13 @@ router.delete('/categories/:id', deleteCategory);
 router.get('/addons', getAddonGroups);
 router.post('/addons', createAddonGroup);
 
+// Inventory Routes (CRUD)
 router.get('/inventory', getInventory);
 router.get('/inventory/low-stock', getLowStockInventory);
+router.get('/inventory/:id', getInventoryItemById);
 router.post('/inventory', createInventoryItem);
 router.put('/inventory/:id', updateInventoryItem);
+router.delete('/inventory/:id', deleteInventoryItem);
 
 // Table Routes (CRUD)
 router.get('/tables', getTables);
