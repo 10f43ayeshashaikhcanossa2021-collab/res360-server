@@ -15,9 +15,6 @@ import {
   createInventoryItem,
   updateInventoryItem,
   getLowStockInventory,
-  getTables,
-  createTable,
-  updateTableStatus,
   getReports,
   getSaleReport,
   getSettings,
@@ -60,6 +57,14 @@ import {
   deleteCustomer
 } from '../controller/customerController.js';
 
+import {
+  getTables,
+  getTableById,
+  createTable,
+  updateTableStatus,
+  deleteTable
+} from '../controller/tableController.js';
+
 const router = express.Router();
 
 router.get('/health', getHealthCheck);
@@ -91,9 +96,12 @@ router.get('/inventory/low-stock', getLowStockInventory);
 router.post('/inventory', createInventoryItem);
 router.put('/inventory/:id', updateInventoryItem);
 
+// Table Routes (CRUD)
 router.get('/tables', getTables);
+router.get('/tables/:id', getTableById);
 router.post('/tables', createTable);
 router.put('/tables/:id/status', updateTableStatus);
+router.delete('/tables/:id', deleteTable);
 
 // KDS Routes (CRUD)
 router.get('/kds/tickets', getKdsTickets);
