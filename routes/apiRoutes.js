@@ -20,6 +20,7 @@ import {
   getTables,
   createTable,
   updateTableStatus,
+  deleteTable,
   getKdsTickets,
   advanceKdsTicket,
   toggleKdsItemCheck,
@@ -64,6 +65,7 @@ router.put('/inventory/:id', updateInventoryItem);
 router.get('/tables', getTables);
 router.post('/tables', createTable);
 router.put('/tables/:id/status', updateTableStatus);
+router.delete('/tables/:id', deleteTable);
 
 router.get('/kds/tickets', getKdsTickets);
 router.put('/kds/tickets/:id/advance', advanceKdsTicket);
