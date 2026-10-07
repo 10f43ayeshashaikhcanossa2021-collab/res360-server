@@ -11,8 +11,6 @@ import {
   deleteProduct,
   getAddonGroups,
   createAddonGroup,
-  getSettings,
-  updateSettings,
   getChatbotSuggestions,
   sendChatbotMessage
 } from '../controller/apiController.js';
@@ -73,6 +71,12 @@ import {
   getSaleReport,
   getCustomerReports
 } from '../controller/reportController.js';
+
+import {
+  getSettings,
+  updateSettings,
+  resetSettings
+} from '../controller/settingsController.js';
 
 const router = express.Router();
 
@@ -142,8 +146,10 @@ router.get('/reports', getReports);
 router.get('/reports/sales', getSaleReport);
 router.get('/reports/customers', getCustomerReports);
 
+// Settings Routes (Persistent in MongoDB)
 router.get('/settings', getSettings);
 router.put('/settings', updateSettings);
+router.post('/settings/reset', resetSettings);
 
 router.get('/chatbot', getChatbotSuggestions);
 router.post('/chatbot/message', sendChatbotMessage);
