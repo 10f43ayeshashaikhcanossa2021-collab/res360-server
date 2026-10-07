@@ -10,9 +10,7 @@ import {
   updateProduct,
   deleteProduct,
   getAddonGroups,
-  createAddonGroup,
-  getChatbotSuggestions,
-  sendChatbotMessage
+  createAddonGroup
 } from '../controller/apiController.js';
 
 import {
@@ -77,6 +75,11 @@ import {
   updateSettings,
   resetSettings
 } from '../controller/settingsController.js';
+
+import {
+  getChatbotSuggestions,
+  sendChatbotMessage
+} from '../controller/chatbotController.js';
 
 const router = express.Router();
 
@@ -151,6 +154,7 @@ router.get('/settings', getSettings);
 router.put('/settings', updateSettings);
 router.post('/settings/reset', resetSettings);
 
+// AI Chatbot Analyst Routes (Live MongoDB-backed Intelligence)
 router.get('/chatbot', getChatbotSuggestions);
 router.post('/chatbot/message', sendChatbotMessage);
 
