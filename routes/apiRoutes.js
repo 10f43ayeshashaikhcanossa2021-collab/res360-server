@@ -11,8 +11,6 @@ import {
   deleteProduct,
   getAddonGroups,
   createAddonGroup,
-  getReports,
-  getSaleReport,
   getSettings,
   updateSettings,
   getChatbotSuggestions,
@@ -69,6 +67,12 @@ import {
   updateInventoryItem,
   deleteInventoryItem
 } from '../controller/inventoryController.js';
+
+import {
+  getReports,
+  getSaleReport,
+  getCustomerReports
+} from '../controller/reportController.js';
 
 const router = express.Router();
 
@@ -133,8 +137,10 @@ router.post('/orders', createOrder);
 router.put('/orders/:id/status', updateOrderStatus);
 router.delete('/orders/:id', deleteOrder);
 
+// Reports & Analytics Routes
 router.get('/reports', getReports);
 router.get('/reports/sales', getSaleReport);
+router.get('/reports/customers', getCustomerReports);
 
 router.get('/settings', getSettings);
 router.put('/settings', updateSettings);
