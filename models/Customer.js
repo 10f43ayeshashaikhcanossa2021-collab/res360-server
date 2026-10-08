@@ -5,7 +5,7 @@ const customerSchema = new mongoose.Schema(
     restaurantId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Restaurant",
-      required: true,
+      default: null,
     },
 
     name: {
